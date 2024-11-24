@@ -50,8 +50,8 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-2 text-gray-400">
               <li>San Luis Obispo, CA 93401</li>
-              <li>(555) 123-4567</li>
-              <li>info@etcarpetcleaning.com</li>
+              <li>(508) 704-2301</li>
+              <li>contact@etcarpetcleaning.com</li>
             </ul>
           </div>
 
