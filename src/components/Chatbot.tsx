@@ -33,7 +33,7 @@ export default function Chatbot({ onClose }: { onClose: () => void }) {
 
   const sendMessageToN8N = async (message: string): Promise<ChatResponse> => {
     try {
-      const response = await fetch('https://n8n.devlewiso.tech/webhook-test/05fcfb6d-79a8-4c10-b08a-ac315fe7f51a', {
+      const response = await fetch('https://minder.v-pn.online/webhook-test/4dbfae05-131b-441c-8df4-f6195f712bbb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

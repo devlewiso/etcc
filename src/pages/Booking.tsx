@@ -84,7 +84,7 @@ export default function Booking() {
 
     try {
       // Send data to the webhook
-      const response = await fetch('https://n8n.devlewiso.tech/webhook/d685c800-8e78-4b82-bd4b-7de1dfbbca7f', {
+      const response = await fetch('https://minder.v-pn.online/webhook/ddca06cb-0209-4cce-be4b-79eeeb8964b7', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

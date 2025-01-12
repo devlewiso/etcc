@@ -56,7 +56,7 @@ export default function Contact() {
     };
 
     try {
-      await axios.post('https://n8n.devlewiso.tech/webhook/submit-form', [data], {
+      await axios.post('https://minder.v-pn.online/webhook/89846d63-c694-45f1-a2d6-a79fd14ca812', [data], {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -233,7 +233,7 @@ export default function Contact() {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
                   rows={5}
                 />
-              </div>
+              </div>     
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white font-semibold p-3 rounded-lg hover:bg-blue-700 transition"
