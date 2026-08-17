@@ -1,11 +1,114 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Droplets, Sofa, Grid, Sprout, Dog, Building2, CheckCircle2, ArrowRight, 
+import {
+  Droplets, Sofa, Grid, Sprout, Dog, Building2, CheckCircle2, ArrowRight,
   Bed, Fan, Shield, Sparkles, Home, Briefcase
 } from 'lucide-react';
+import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
+
+// WhatsApp business number (805) 704-2301
+const WHATSAPP_NUMBER = '18057042301';
+
+const openWhatsAppWithService = (serviceName: string) => {
+  const message = `Hi! I'm interested in booking ${serviceName}.%0A%0A` +
+    `🔹 *Service:* ${serviceName}%0A%0A` +
+    `Could you please provide more information and a quote?`;
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  window.open(whatsappUrl, '_blank');
+};
 
 export default function Services() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Carpet Cleaning Services",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "E.T Carpet Cleaning",
+      "telephone": "+1-805-704-2301",
+      "url": "https://etsteamcarpetcleaning.com"
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.2828",
+        "longitude": "-120.6596"
+      },
+      "geoRadius": "50000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Carpet Cleaning Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Steam Carpet Cleaning",
+            "description": "Deep cleaning that removes dirt, stains, and allergens from your carpets",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Upholstery Cleaning",
+            "description": "Expert cleaning for all types of furniture",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tile & Grout Cleaning",
+            "description": "Restore the shine to your tiles and remove dirt from grout lines",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Area Rug Cleaning",
+            "description": "Specialized cleaning for all types of area rugs and materials",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pet Stain Removal",
+            "description": "Effective treatment for pet accidents and odor elimination",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Commercial Cleaning",
+            "description": "Professional cleaning solutions for businesses and offices",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mattress Cleaning",
+            "description": "Deep cleaning and sanitization for all mattress sizes",
+            "provider": { "@type": "LocalBusiness", "name": "E.T Carpet Cleaning" }
+          }
+        }
+      ]
+    }
+  };
   const mainServices = [
     {
       icon: <Droplets className="h-12 w-12 text-blue-600" />,
@@ -127,6 +230,13 @@ export default function Services() {
 
   return (
     <div className="py-24">
+      <SEO
+        title="Our Services | Steam Carpet Cleaning, Upholstery & More"
+        description="Professional carpet cleaning services in San Luis Obispo: steam cleaning, upholstery, tile & grout, area rugs, pet stain removal, commercial cleaning. Free quotes available."
+        canonical="/services"
+        jsonLd={jsonLd}
+      />
+      <Breadcrumbs items={[{ name: 'Services', path: '/services' }]} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Services Section */}
         <div className="text-center mb-16">
@@ -154,14 +264,17 @@ export default function Services() {
               </ul>
               <div className="flex items-center justify-between">
                 <span className="text-blue-600 font-semibold">{service.pricing}</span>
-                <Link 
-                  to="/booking" 
+                <button
+                  onClick={() => openWhatsAppWithService(service.title)}
                   className="inline-flex items-center bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
                 >
-                  Book Now
+                  Book on WhatsApp
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                </button>
               </div>
+              <p className="text-sm text-gray-500 mt-3">
+                Questions? Check our <Link to="/faq" className="text-blue-600 hover:underline">FAQ</Link> or <Link to="/contact" className="text-blue-600 hover:underline">contact us</Link>
+              </p>
             </div>
           ))}
         </div>
@@ -186,7 +299,18 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-                <p className="text-blue-600 font-semibold">{service.pricing}</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-blue-600 font-semibold">{service.pricing}</p>
+                  <button
+                    onClick={() => openWhatsAppWithService(service.title)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition"
+                  >
+                    Book on WhatsApp
+                  </button>
+                </div>
+                <p className="text-sm text-gray-500 mt-2">
+                  <Link to="/faq" className="text-blue-600 hover:underline">FAQ</Link> | <Link to="/contact" className="text-blue-600 hover:underline">Contact</Link>
+                </p>
               </div>
             ))}
           </div>
@@ -210,13 +334,13 @@ export default function Services() {
             Not sure which service you need? Contact us for a free consultation and custom quote.
           </p>
           <div className="flex justify-center gap-4">
-            <Link
-              to="/booking"
+            <button
+              onClick={() => openWhatsAppWithService('General Inquiry')}
               className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition flex items-center"
             >
-              Schedule Service
+              Chat on WhatsApp
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            </button>
             <a
               href="tel:+18057042301"
               className="bg-gray-100 text-gray-900 px-8 py-3 rounded-full hover:bg-gray-200 transition"

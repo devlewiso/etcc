@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import SEO from './SEO';
 
 export default function Reviews() {
   const reviews = [
@@ -23,8 +24,64 @@ export default function Reviews() {
     }
   ];
 
+  const reviewJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    "itemReviewed": {
+      "@type": "LocalBusiness",
+      "name": "E.T Carpet Cleaning"
+    },
+    "ratingValue": "5",
+    "reviewCount": "1000+",
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Johnson"
+        },
+        "reviewBody": "Absolutely amazing service! They removed stains I thought would never come out. My carpets look brand new!"
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Michael Chen"
+        },
+        "reviewBody": "Professional, punctual, and thorough. Best carpet cleaning service I've used in San Luis Obispo."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Emily Rodriguez"
+        },
+        "reviewBody": "The team was fantastic! They were careful with my furniture and got my upholstery looking perfect."
+      }
+    ]
+  };
+
   return (
-    <section id="reviews" className="py-24 bg-gray-50">
+    <>
+      <SEO
+        title="Customer Reviews"
+        description="Read what our customers say about E.T Carpet Cleaning - 5-star rated service in San Luis Obispo"
+        canonical="/reviews"
+        jsonLd={reviewJsonLd}
+      />
+      <section id="reviews" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -73,5 +130,6 @@ export default function Reviews() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -1,9 +1,45 @@
 import React from 'react';
 import { Users, Award, Calendar } from 'lucide-react';
+import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function About() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About E.T Carpet Cleaning",
+    "description": "Learn about E.T Carpet Cleaning - providing exceptional eco-friendly carpet cleaning services in San Luis Obispo since 2010.",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "E.T Carpet Cleaning",
+      "foundingDate": "2010",
+      "description": "Bringing interstellar cleanliness to San Luis Obispo since 2010. Our commitment to quality, eco-friendly practices, and customer satisfaction has made us the most trusted name in carpet cleaning.",
+      "telephone": "+1-805-704-2301",
+      "email": "contact@etsteamcarpetcleaning.com",
+      "url": "https://etsteamcarpetcleaning.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Luis Obispo",
+        "addressRegion": "CA",
+        "postalCode": "93401",
+        "addressCountry": "US"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "1000+"
+      }
+    }
+  };
   return (
     <div className="py-24">
+      <SEO
+        title="About Us | E.T Carpet Cleaning San Luis Obispo"
+        description="Learn about E.T Carpet Cleaning - providing exceptional eco-friendly carpet cleaning services in San Luis Obispo since 2010. 1000+ happy customers, 13+ years of experience."
+        canonical="/about"
+        jsonLd={jsonLd}
+      />
+      <Breadcrumbs items={[{ name: 'About', path: '/about' }]} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-16">

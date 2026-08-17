@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Documentation (keep README, exclude others)
+*.md
+!README.md
+
+# Bolt config
+.bolt/

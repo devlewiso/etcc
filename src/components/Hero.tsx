@@ -82,30 +82,68 @@ export default function Hero() {
       </div>
 
       {/* Technology Section */}
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Ultra-Modern Cleaning Technology
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              At E.T Carpet Cleaning, we combine a customer-centric approach with cutting-edge cleaning technology. 
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              At E.T Carpet Cleaning, we combine a customer-centric approach with cutting-edge cleaning technology.
               Our technicians use special UV lights to detect and remove even the smallest and hidden stains.
             </p>
           </div>
 
-          <div className="bg-gray-50 rounded-xl p-8 mb-8">
-            <p className="text-gray-700 text-center">
-              We are a close-knit team of experienced cleaning experts. We conduct a rigorous background check 
-              of all our professionals to ensure customer safety and peace of mind.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+              <div className="mb-4">
+                <svg className="h-12 w-12 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 text-center mb-3">
+                Advanced UV Technology
+              </h3>
+              <p className="text-gray-600 text-center">
+                Our technicians use special UV lights to detect and remove even the smallest and hidden stains that regular cleaning might miss.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+              <div className="mb-4">
+                <svg className="h-12 w-12 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 text-center mb-3">
+                Background-Checked Professionals
+              </h3>
+              <p className="text-gray-600 text-center">
+                We are a close-knit team of experienced cleaning experts. All professionals undergo rigorous background checks for your safety and peace of mind.
+              </p>
+            </div>
           </div>
 
-          <div className="text-sm text-gray-600">
-            <p>* Restrictions May Apply</p>
-            <p>* Price can vary depending on size, special treatments or severity of carpet</p>
-            <p>* We do not service Creston or San Simeon</p>
-            <p>* Additional fuel fees apply to servicing Cambria, Cayucos & Heritage Ranch</p>
+          <div className="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6 mb-8">
+            <h4 className="font-semibold text-blue-900 mb-3">Important Information:</h4>
+            <ul className="space-y-2 text-sm text-blue-800">
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Restrictions May Apply
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Price can vary depending on size, special treatments or severity of carpet
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                We do not service Creston or San Simeon
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-600 mr-2">•</span>
+                Additional fuel fees apply to servicing Cambria, Cayucos & Heritage Ranch
+              </li>
+            </ul>
           </div>
         </div>
       </div>

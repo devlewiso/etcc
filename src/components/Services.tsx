@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Droplets, Sofa, Grid, Sprout, Dog, Building2 } from 'lucide-react';
 
 export default function Services() {
@@ -62,9 +63,9 @@ export default function Services() {
               <p className="text-gray-600 mb-4">
                 {service.description}
               </p>
-              <button className="text-emerald-600 font-medium hover:text-emerald-700 transition">
+              <Link to="/services" className="text-emerald-600 font-medium hover:text-emerald-700 transition">
                 Learn More →
-              </button>
+              </Link>
             </div>
           ))}
         </div>

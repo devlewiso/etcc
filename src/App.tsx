@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Rocket, MessageCircle, X, Phone } from 'lucide-react';
-import Chatbot from './components/Chatbot';
+import { Rocket, Phone } from 'lucide-react';
+import WhatsAppWidget from './components/WhatsAppWidget';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
 import Booking from './pages/Booking';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Footer from './components/Footer';
 
 function App() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-
   return (
     <Router>
       <div className="min-h-screen bg-white">
@@ -26,11 +25,12 @@ function App() {
               </Link>
               <div className="hidden md:flex items-center space-x-8">
                 <Link to="/" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
+                <Link to="/about" className="text-gray-700 hover:text-blue-600 transition">About</Link>
                 <Link to="/services" className="text-gray-700 hover:text-blue-600 transition">Services</Link>
                 <Link to="/faq" className="text-gray-700 hover:text-blue-600 transition">FAQ</Link>
                 <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition">Contact</Link>
-                <a 
-                  href="tel:+18057042301" 
+                <a
+                  href="tel:+18057042301"
                   className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition flex items-center"
                 >
                   <Phone className="h-4 w-4 mr-2" />
@@ -49,19 +49,12 @@ function App() {
             <Route path="/booking" element={<Booking />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Routes>
         </main>
 
-        {/* Chatbot Toggle */}
-        <button
-          onClick={() => setIsChatOpen(!isChatOpen)}
-          className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition z-50"
-        >
-          {isChatOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
-        </button>
-
-        {/* Chatbot Dialog */}
-        {isChatOpen && <Chatbot onClose={() => setIsChatOpen(false)} />}
+        {/* WhatsApp Widget */}
+        <WhatsAppWidget />
 
         <Footer />
       </div>

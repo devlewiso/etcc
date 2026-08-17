@@ -1,7 +1,36 @@
 import React, { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
+import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Booking() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Carpet Cleaning Booking",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "E.T Carpet Cleaning",
+      "telephone": "+1-805-704-2301",
+      "url": "https://etsteamcarpetcleaning.com"
+    },
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "name": "Book Carpet Cleaning Service",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://etsteamcarpetcleaning.com/booking",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "result": {
+        "@type": "Reservation",
+        "description": "Reserve a carpet cleaning service appointment"
+      }
+    }
+  };
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [serviceType, setServiceType] = useState('');
@@ -25,40 +54,14 @@ export default function Booking() {
     'Commercial Cleaning'
   ];
 
+  // Business hours: 8:00 AM - 6:00 PM (matching openingHoursSpecification)
   const timeSlots = [
-'06:00',
- '06:30',
- '07:00',
- '07:30',
- '08:00',
- '08:30',
- '09:00',
- '09:30',
- '10:00',
- '10:30',
- '11:00',
- '11:30',
- '12:00',
- '12:30',
- '13:00',
- '13:30',
- '14:00',
- '14:30',
- '15:00',
- '15:30',
- '16:00',
- '16:30',
- '17:00',
- '17:30',
- '18:00',
- '18:30',
- '19:00',
- '19:30',
- '20:00',
- '20:30',
- '21:00',
- '21:30',
- '22:00'
+    '08:00', '08:30', '09:00', '09:30',
+    '10:00', '10:30', '11:00', '11:30',
+    '12:00', '12:30', '13:00', '13:30',
+    '14:00', '14:30', '15:00', '15:30',
+    '16:00', '16:30', '17:00', '17:30',
+    '18:00'
   ];
 
   const generateBookingNumber = () => {
@@ -140,6 +143,13 @@ export default function Booking() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <SEO
+        title="Book Now | Schedule Carpet Cleaning Service"
+        description="Schedule your professional carpet cleaning service online. Easy booking for San Luis Obispo, Pismo Beach, Arroyo Grande and surrounding areas."
+        canonical="/booking"
+        jsonLd={jsonLd}
+      />
+      <Breadcrumbs items={[{ name: 'Booking', path: '/booking' }]} />
       <div className="bg-white rounded-xl shadow-sm p-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Book Your Service</h1>
         

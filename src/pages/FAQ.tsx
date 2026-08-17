@@ -1,6 +1,8 @@
 import React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
+import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 interface FAQItem {
   question: string;
@@ -8,6 +10,73 @@ interface FAQItem {
 }
 
 export default function FAQ() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should I clean my carpets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The frequency depends on your specific situation:\n\n" +
+            "• Regular households (no pets, shoes off): Every 12-18 months\n" +
+            "• Families with children: Every 3-6 months\n" +
+            "• Pet owners: Every 3-4 months\n" +
+            "• Allergy sufferers: As needed or every 3 months\n" +
+            "• High-traffic commercial areas: Every 2-3 months\n\n" +
+            "Regular cleaning helps prevent permanent traffic marks and fiber breakdown."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in your steam carpet cleaning service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our professional steam cleaning service includes:\n\n" +
+            "• Pre-inspection of your carpets\n" +
+            "• Pre-treatment of heavy traffic areas and spots\n" +
+            "• Hot water extraction with temperatures up to 260°F\n" +
+            "• Eco-friendly cleaning solutions\n" +
+            "• Post-cleaning carpet grooming\n" +
+            "• Final inspection\n\n" +
+            "We use state-of-the-art equipment that removes 99% of dirt, bacteria, and allergens."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long will it take for my carpets to dry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Drying time typically ranges from 6-24 hours, depending on carpet type, room ventilation, humidity levels, and air circulation. To speed up drying, we recommend opening windows, using ceiling fans, and running air conditioning or heating."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer commercial cleaning services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide comprehensive commercial cleaning services including regular maintenance programs, after-hours service, weekend appointments, emergency cleaning, and custom cleaning schedules."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle pet stains and odors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our pet stain and odor removal process includes deep inspection with UV lights, specialized enzyme-based treatments, deep cleaning, deodorization treatment, and sanitization."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We proudly serve San Luis Obispo, Pismo Beach, Arroyo Grande, Morro Bay, Los Osos, Atascadero, and Paso Robles."
+        }
+      }
+    ]
+  };
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs: FAQItem[] = [
@@ -99,6 +168,13 @@ export default function FAQ() {
 
   return (
     <div className="py-24">
+      <SEO
+        title="FAQ | Carpet Cleaning Questions Answered"
+        description="Find answers to common questions about our carpet cleaning services in San Luis Obispo: pricing, drying time, pet stains, service areas, and more."
+        canonical="/faq"
+        jsonLd={jsonLd}
+      />
+      <Breadcrumbs items={[{ name: 'FAQ', path: '/faq' }]} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">

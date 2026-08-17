@@ -42,6 +42,11 @@ export default function Footer() {
                   Book Now
                 </Link>
               </li>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-emerald-500 transition">
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -50,8 +55,8 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-2 text-gray-400">
               <li>San Luis Obispo, CA 93401</li>
-              <li>(508) 704-2301</li>
-              <li>contact@etcarpetcleaning.com</li>
+              <li>(805) 704-2301</li>
+              <li>contact@etsteamcarpetcleaning.com</li>
             </ul>
           </div>
 
@@ -59,13 +64,13 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-emerald-500 transition">
+              <a href="https://www.facebook.com/etsteamcarpetcleaning/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emerald-500 transition">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-emerald-500 transition">
+              <a href="https://www.instagram.com/etsteamcarpetcleaning" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emerald-500 transition">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-emerald-500 transition">
+              <a href="https://x.com/EtCarpetSteam" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-emerald-500 transition">
                 <Twitter className="h-6 w-6" />
               </a>
             </div>
