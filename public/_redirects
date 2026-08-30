@@ -1,0 +1,5 @@
+# SPA fallback for client-side routing.
+# Netlify serves an exact prerendered .html file when one exists
+# (e.g. /services -> services.html, /service-area/pismo-beach -> service-area/pismo-beach.html),
+# otherwise it falls back to the app shell so React Router can handle the route.
+/*    /index.html   200

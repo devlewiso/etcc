@@ -4,16 +4,18 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function About() {
+  // NOTE: founding year and any customer/project counts are pending
+  // confirmation from the owner (see Reporte Auditoria/07-preguntas-para-papa.md).
+  // Until verified, this page uses no unverifiable numbers and no aggregateRating.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About E.T Carpet Cleaning",
-    "description": "Learn about E.T Carpet Cleaning - providing exceptional eco-friendly carpet cleaning services in San Luis Obispo since 2010.",
+    "description": "Learn about E.T Carpet Cleaning - a local, family-run, eco-friendly carpet cleaning company serving San Luis Obispo County, California.",
     "mainEntity": {
       "@type": "LocalBusiness",
       "name": "E.T Carpet Cleaning",
-      "foundingDate": "2010",
-      "description": "Bringing interstellar cleanliness to San Luis Obispo since 2010. Our commitment to quality, eco-friendly practices, and customer satisfaction has made us the most trusted name in carpet cleaning.",
+      "description": "A local, family-run carpet cleaning company on California's Central Coast. Our focus is honest pricing, eco-friendly cleaning, and meticulous work.",
       "telephone": "+1-805-704-2301",
       "email": "contact@etsteamcarpetcleaning.com",
       "url": "https://etsteamcarpetcleaning.com",
@@ -23,11 +25,6 @@ export default function About() {
         "addressRegion": "CA",
         "postalCode": "93401",
         "addressCountry": "US"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "1000+"
       }
     }
   };
@@ -35,7 +32,7 @@ export default function About() {
     <div className="py-24">
       <SEO
         title="About Us | E.T Carpet Cleaning San Luis Obispo"
-        description="Learn about E.T Carpet Cleaning - providing exceptional eco-friendly carpet cleaning services in San Luis Obispo since 2010. 1000+ happy customers, 13+ years of experience."
+        description="E.T Carpet Cleaning is a local, family-run, eco-friendly carpet cleaning company serving San Luis Obispo, Pismo Beach, Arroyo Grande, Paso Robles and the Central Coast."
         canonical="/about"
         jsonLd={jsonLd}
       />
@@ -47,7 +44,7 @@ export default function About() {
             About E.T Carpet Cleaning
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Bringing interstellar cleanliness to San Luis Obispo since 2010
+            A local, family-run carpet cleaning company on the Central Coast
           </p>
         </div>
 
@@ -56,13 +53,14 @@ export default function About() {
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
             <p className="text-gray-600 mb-4">
-              Founded in 2010, E.T Carpet Cleaning has been providing exceptional cleaning services
-              to San Luis Obispo and surrounding areas. Our commitment to quality, eco-friendly
-              practices, and customer satisfaction has made us the most trusted name in carpet cleaning.
+              E.T Carpet Cleaning is a local, family-run business serving San Luis Obispo
+              County and the Central Coast. We started with a simple goal: honest pricing
+              and careful, thorough work on every job.
             </p>
             <p className="text-gray-600">
-              We believe in using the latest technology and environmentally conscious products
-              to deliver outstanding results while protecting your family's health and our planet.
+              We use modern hot-water extraction equipment, UV inspection to find hidden
+              stains, and eco-friendly, non-toxic cleaning solutions that are safe for your
+              family, your pets, and the environment.
             </p>
           </div>
           <div className="relative h-[400px]">
@@ -74,22 +72,22 @@ export default function About() {
           </div>
         </div>
 
-        {/* Stats */}
+        {/* What sets us apart */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           <div className="bg-white p-6 rounded-xl shadow-sm text-center">
             <Users className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-            <div className="text-4xl font-bold text-gray-900 mb-2">1000+</div>
-            <div className="text-gray-600">Happy Customers</div>
+            <div className="text-xl font-bold text-gray-900 mb-2">Family-Run &amp; Local</div>
+            <div className="text-gray-600">You deal directly with the owner, not a call center</div>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-sm text-center">
             <Award className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-            <div className="text-4xl font-bold text-gray-900 mb-2">13+</div>
-            <div className="text-gray-600">Years of Experience</div>
+            <div className="text-xl font-bold text-gray-900 mb-2">Background-Checked Team</div>
+            <div className="text-gray-600">Every technician is vetted for your peace of mind</div>
           </div>
           <div className="bg-white p-6 rounded-xl shadow-sm text-center">
             <Calendar className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-            <div className="text-4xl font-bold text-gray-900 mb-2">5000+</div>
-            <div className="text-gray-600">Projects Completed</div>
+            <div className="text-xl font-bold text-gray-900 mb-2">100% Satisfaction Guarantee</div>
+            <div className="text-gray-600">If you&apos;re not happy, we make it right</div>
           </div>
         </div>
 

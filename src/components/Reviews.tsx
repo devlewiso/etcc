@@ -1,135 +1,94 @@
 import React from 'react';
-import { Star } from 'lucide-react';
-import SEO from './SEO';
+import { Star, ExternalLink } from 'lucide-react';
+import GoogleBusinessMap from './GoogleBusinessMap';
+
+/**
+ * Reviews section.
+ *
+ * The Google Business Profile has real, verifiable reviews (currently 5.0 from a
+ * handful of Google reviews). We link to them and show the honest count.
+ *
+ * We intentionally do NOT hard-code testimonials or an AggregateRating JSON-LD
+ * block here: fabricated / self-serving ratings violate Google's structured-data
+ * policies. If you later display real reviews collected on this site, add
+ * AggregateRating with the REAL numbers at that point.
+ *
+ * When the count/rating change, update REVIEW_COUNT / REVIEW_RATING below.
+ */
+
+// Canonical Google Business Profile listing (from the Maps CID).
+const GOOGLE_PROFILE_URL = 'https://www.google.com/maps?cid=6967332072097920562';
+// TODO: replace with the official "get more reviews" short link from the GBP
+// dashboard (looks like https://g.page/r/XXXXXXXX/review) so it opens the
+// write-a-review box directly.
+const GOOGLE_REVIEW_URL = GOOGLE_PROFILE_URL;
+const YELP_URL = 'https://www.yelp.com/biz/et-steam-carpet-cleaning-san-luis-obispo';
+
+const REVIEW_RATING = '5.0';
+const REVIEW_COUNT = 7;
 
 export default function Reviews() {
-  const reviews = [
-    {
-      name: "Sarah Johnson",
-      rating: 5,
-      text: "Absolutely amazing service! They removed stains I thought would never come out. My carpets look brand new!",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100&h=100"
-    },
-    {
-      name: "Michael Chen",
-      rating: 5,
-      text: "Professional, punctual, and thorough. Best carpet cleaning service I've used in San Luis Obispo.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100"
-    },
-    {
-      name: "Emily Rodriguez",
-      rating: 5,
-      text: "The team was fantastic! They were careful with my furniture and got my upholstery looking perfect.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100&h=100"
-    }
-  ];
-
-  const reviewJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    "itemReviewed": {
-      "@type": "LocalBusiness",
-      "name": "E.T Carpet Cleaning"
-    },
-    "ratingValue": "5",
-    "reviewCount": "1000+",
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sarah Johnson"
-        },
-        "reviewBody": "Absolutely amazing service! They removed stains I thought would never come out. My carpets look brand new!"
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Michael Chen"
-        },
-        "reviewBody": "Professional, punctual, and thorough. Best carpet cleaning service I've used in San Luis Obispo."
-      },
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Emily Rodriguez"
-        },
-        "reviewBody": "The team was fantastic! They were careful with my furniture and got my upholstery looking perfect."
-      }
-    ]
-  };
-
   return (
-    <>
-      <SEO
-        title="Customer Reviews"
-        description="Read what our customers say about E.T Carpet Cleaning - 5-star rated service in San Luis Obispo"
-        canonical="/reviews"
-        jsonLd={reviewJsonLd}
-      />
-      <section id="reviews" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            What Our Customers Say
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied customers
-          </p>
-        </div>
+    <section id="reviews" className="py-24 bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">What our customers say</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review, index) => (
-            <div 
-              key={index}
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition"
-            >
-              <div className="flex items-center mb-4">
-                <img
-                  src={review.image}
-                  alt={review.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div className="ml-4">
-                  <h3 className="font-semibold text-gray-900">{review.name}</h3>
-                  <div className="flex">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-600 italic">"{review.text}"</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <span className="text-2xl font-bold text-gray-900">{REVIEW_RATING}</span>
+          <span className="flex" aria-hidden="true">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+            ))}
+          </span>
           <a
-            href="https://www.yelp.com"
+            href={GOOGLE_PROFILE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-600 hover:text-emerald-700 font-medium"
+            className="text-blue-600 hover:underline"
           >
-            Read more reviews on Yelp →
+            {REVIEW_COUNT} Google reviews
           </a>
+        </div>
+
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          We&apos;re a local family business and most of our work comes from word of
+          mouth. Read our reviews on Google, or leave one to help other Central
+          Coast families find us.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition"
+          >
+            <Star className="h-5 w-5" />
+            Leave a Google review
+          </a>
+          <a
+            href={YELP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-full font-semibold border border-gray-300 hover:bg-gray-100 transition"
+          >
+            <ExternalLink className="h-5 w-5" />
+            Find us on Yelp
+          </a>
+        </div>
+
+        <p className="mt-6 text-sm text-gray-500">
+          Want to talk to a past customer first? Call{' '}
+          <a href="tel:+18057042301" className="text-blue-600 hover:underline">
+            (805)&nbsp;704-2301
+          </a>{' '}
+          and we&apos;ll connect you with references in your area.
+        </p>
+
+        <div className="mt-10 text-left">
+          <GoogleBusinessMap heading="See us on Google" />
         </div>
       </div>
     </section>
-    </>
   );
 }

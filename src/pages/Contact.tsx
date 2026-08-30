@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import ServiceArea from '../components/ServiceArea';
+import GoogleBusinessMap from '../components/GoogleBusinessMap';
 
 const backgroundImages = [
   'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&q=80',
@@ -253,7 +254,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Award className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700">13+ Years Experience</span>
+                  <span className="text-gray-700">Experienced Local Team</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Star className="h-5 w-5 text-blue-600" />
@@ -265,6 +266,8 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+
+            <GoogleBusinessMap />
           </div>
 
           {/* Contact Form */}

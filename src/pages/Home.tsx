@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import SEO from '../components/SEO';
 import LocalSeoContent from '../components/LocalSeoContent';
+import WhyChooseUs from '../components/WhyChooseUs';
+import ServicesSection from '../components/Services';
+import Reviews from '../components/Reviews';
 
-const WhyChooseUs = lazy(() => import('../components/WhyChooseUs'));
-const ServicesSection = lazy(() => import('../components/Services'));
-const Reviews = lazy(() => import('../components/Reviews'));
+// Only the Leaflet map stays lazy (heavy, non-essential, client-only).
 const ServiceArea = lazy(() => import('../components/ServiceArea'));
 
 export default function Home() {
@@ -52,71 +53,21 @@ export default function Home() {
     "sameAs": [
       "https://www.facebook.com/etsteamcarpetcleaning/",
       "https://www.instagram.com/etsteamcarpetcleaning",
-      "https://x.com/EtCarpetSteam"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "1000+"
-    }
-  };
-
-  // FAQ schema for rich snippets
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How often should I clean my carpets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The frequency depends on your specific situation:\n\n• Regular households (no pets, shoes off): Every 12-18 months\n• Families with children: Every 3-6 months\n• Pet owners: Every 3-4 months\n• Allergy sufferers: As needed or every 3 months\n\nRegular cleaning helps prevent permanent traffic marks and fiber breakdown."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take for carpets to dry?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Drying time typically ranges from 6-24 hours, depending on carpet type, room ventilation, humidity levels, and air circulation. To speed up drying, we recommend opening windows, using ceiling fans, and running air conditioning or heating."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are your cleaning products safe for pets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! We use eco-friendly, non-toxic cleaning solutions that are completely safe for pets and children. Our enzyme-based treatments are specifically designed to be effective while being gentle on your family and furry friends."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer same-day service?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we offer same-day service when available. Call us at (805) 704-2301 to check our current availability. We typically can schedule appointments within 24-48 hours, and emergency situations may be accommodated sooner."
-        }
-      }
+      "https://x.com/EtCarpetSteam",
+      "https://www.yelp.com/biz/et-steam-carpet-cleaning-san-luis-obispo",
+      "https://www.youtube.com/@e.t.carpetcleaning"
     ]
+    // NOTE: no "aggregateRating" here on purpose. Add it back ONLY with the
+    // real values once the Google Business Profile has verified reviews.
   };
 
-  // Video schema placeholder - ready to use when video content is added
-  const videoSchema = {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "E.T Carpet Cleaning Process",
-    "description": "Watch our professional carpet cleaning process in action",
-    "thumbnailUrl": "https://etsteamcarpetcleaning.com/video-thumbnail.jpg",
-    "uploadDate": "2026-08-16",
-    "duration": "PT2M30S",
-    "contentUrl": "https://etsteamcarpetcleaning.com/video.mp4",
-    "embedUrl": "https://etsteamcarpetcleaning.com/embed/video",
-    "interactionCount": "0"
-  };
+  // NOTE: FAQPage schema lives on /faq only (that's where the FAQ content is).
+  // Google flags FAQPage markup on pages without a visible FAQ.
+  // NOTE: VideoObject schema removed - it pointed to /video.mp4 and
+  // /video-thumbnail.jpg, which return 404. Add it back only when a real
+  // video is hosted (e.g. a YouTube embed) with a valid thumbnail + contentUrl.
 
-  // Combine schemas into an array
-  const jsonLd = [localBusinessSchema, faqSchema, videoSchema];
+  const jsonLd = localBusinessSchema;
 
   return (
     <>
@@ -128,22 +79,16 @@ export default function Home() {
         jsonLd={jsonLd}
       />
       <Hero />
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
-        <WhyChooseUs />
-      </Suspense>
+      <WhyChooseUs />
       <div className="text-center py-8 bg-gray-50">
         <p className="text-gray-600 mb-4">Have questions about our services?</p>
         <Link to="/faq" className="text-blue-600 hover:underline font-medium">
           Check our FAQ section →
         </Link>
       </div>
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
-        <ServicesSection />
-      </Suspense>
+      <ServicesSection />
       <LocalSeoContent />
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
-        <Reviews />
-      </Suspense>
+      <Reviews />
       <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
         <ServiceArea />
       </Suspense>

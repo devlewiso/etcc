@@ -31,9 +31,15 @@ export default function Chatbot({ onClose }: { onClose: () => void }) {
     }]);
   }, []);
 
+  // NOTE: this component is not currently mounted anywhere. Before wiring it up,
+  // make sure the n8n workflow below is ACTIVATED (a "/webhook-test/" URL only
+  // responds while the workflow is open in the n8n editor; production must use
+  // the "/webhook/" URL). Configure it via VITE_CHAT_WEBHOOK_URL if possible.
+  const CHAT_WEBHOOK_URL = 'https://minder.v-pn.online/webhook/4dbfae05-131b-441c-8df4-f6195f712bbb';
+
   const sendMessageToN8N = async (message: string): Promise<ChatResponse> => {
     try {
-      const response = await fetch('https://minder.v-pn.online/webhook-test/4dbfae05-131b-441c-8df4-f6195f712bbb', {
+      const response = await fetch(CHAT_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
