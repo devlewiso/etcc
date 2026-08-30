@@ -24,7 +24,10 @@ export default function SEO({
   article,
   jsonLd
 }: SEOProps) {
-  const fullTitle = `${title} | E.T Carpet Cleaning`;
+  // Only append the brand if the caller hasn't already included it, so we
+  // never end up with "... | E.T Carpet Cleaning | E.T Carpet Cleaning".
+  const BRAND = 'E.T Carpet Cleaning';
+  const fullTitle = title.includes(BRAND) ? title : `${title} | ${BRAND}`;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
 
   // Default JSON-LD for LocalBusiness
@@ -69,7 +72,9 @@ export default function SEO({
     "sameAs": [
       "https://www.facebook.com/etsteamcarpetcleaning/",
       "https://www.instagram.com/etsteamcarpetcleaning",
-      "https://x.com/EtCarpetSteam"
+      "https://x.com/EtCarpetSteam",
+      "https://www.yelp.com/biz/et-steam-carpet-cleaning-san-luis-obispo",
+      "https://www.youtube.com/@e.t.carpetcleaning"
     ]
   };
 

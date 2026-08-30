@@ -52,13 +52,12 @@ export default function Home() {
     "sameAs": [
       "https://www.facebook.com/etsteamcarpetcleaning/",
       "https://www.instagram.com/etsteamcarpetcleaning",
-      "https://x.com/EtCarpetSteam"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "1000+"
-    }
+      "https://x.com/EtCarpetSteam",
+      "https://www.yelp.com/biz/et-steam-carpet-cleaning-san-luis-obispo",
+      "https://www.youtube.com/@e.t.carpetcleaning"
+    ]
+    // NOTE: no "aggregateRating" here on purpose. Add it back ONLY with the
+    // real values once the Google Business Profile has verified reviews.
   };
 
   // FAQ schema for rich snippets
@@ -101,22 +100,12 @@ export default function Home() {
     ]
   };
 
-  // Video schema placeholder - ready to use when video content is added
-  const videoSchema = {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "E.T Carpet Cleaning Process",
-    "description": "Watch our professional carpet cleaning process in action",
-    "thumbnailUrl": "https://etsteamcarpetcleaning.com/video-thumbnail.jpg",
-    "uploadDate": "2026-08-16",
-    "duration": "PT2M30S",
-    "contentUrl": "https://etsteamcarpetcleaning.com/video.mp4",
-    "embedUrl": "https://etsteamcarpetcleaning.com/embed/video",
-    "interactionCount": "0"
-  };
+  // NOTE: VideoObject schema removed. It pointed to /video.mp4 and
+  // /video-thumbnail.jpg, which return 404. Add it back only when a real
+  // video is hosted (e.g. a YouTube embed) with a valid thumbnail + contentUrl.
 
   // Combine schemas into an array
-  const jsonLd = [localBusinessSchema, faqSchema, videoSchema];
+  const jsonLd = [localBusinessSchema, faqSchema];
 
   return (
     <>

@@ -20,7 +20,7 @@ export default function LocalSeoContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Trusted Local Carpet Cleaners Since 2010
+Your Local Central Coast Carpet Cleaners
               </h3>
               <p className="text-gray-600 mb-4">
                 E.T Carpet Cleaning is your local expert for professional steam carpet cleaning

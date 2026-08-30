@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" role="img" aria-label="E.T Carpet Cleaning">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f7ff0"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="56" rx="14" fill="url(#lg)"/>
+  <path d="M32 20c5 7 8.5 11 8.5 15.5a8.5 8.5 0 0 1-17 0C23.5 31 27 27 32 20z" fill="#fff" opacity="0.92"/>
+  <text x="32" y="55" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="17" font-weight="700" fill="#fff">ET</text>
+  <text x="74" y="34" font-family="Georgia,'Times New Roman',serif" font-size="24" font-weight="700" fill="#111827">E.T Carpet Cleaning</text>
+  <text x="74" y="54" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" fill="#4b5563">Steam &amp; eco-friendly · San Luis Obispo</text>
+</svg>
