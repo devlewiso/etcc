@@ -23,9 +23,9 @@ export default function LocalSeoContent() {
 Your Local Central Coast Carpet Cleaners
               </h3>
               <p className="text-gray-600 mb-4">
-                E.T Carpet Cleaning is your local expert for professional steam carpet cleaning
-                in San Luis Obispo, Pismo Beach, Arroyo Grande, Morro Bay, Los Osos, Atascadero,
-                and Paso Robles. Our certified technicians use state-of-the-art hot water extraction
+                E.T Carpet Cleaning is a family-run carpet cleaning company serving
+                San Luis Obispo, Pismo Beach, Arroyo Grande, Morro Bay, Los Osos, Atascadero,
+                and Paso Robles since 2023. Our technicians use modern hot-water extraction
                 equipment to remove dirt, stains, allergens, and odors from your carpets.
               </p>
               <p className="text-gray-600 mb-4">

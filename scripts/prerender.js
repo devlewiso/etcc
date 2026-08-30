@@ -112,6 +112,20 @@ const slugsFrom = (file) =>
 const areaSlugs = slugsFrom('src/data/serviceAreas.ts');
 const serviceSlugs = slugsFrom('src/data/services.ts');
 
+// Blog: only pre-render posts whose publishedDate has arrived.
+const todayISO = new Date().toISOString().slice(0, 10);
+const blogDir = path.join(root, 'src/data/blog');
+const publishedBlogSlugs = fs
+  .readdirSync(blogDir)
+  .filter((f) => f.endsWith('.ts') && f !== 'index.ts')
+  .map((f) => fs.readFileSync(path.join(blogDir, f), 'utf8'))
+  .map((src) => ({
+    slug: (src.match(/slug:\s*'([a-z0-9-]+)'/) || [])[1],
+    date: (src.match(/publishedDate:\s*'(\d{4}-\d{2}-\d{2})'/) || [])[1],
+  }))
+  .filter((p) => p.slug && p.date && p.date <= todayISO)
+  .map((p) => p.slug);
+
 const routes = [
   { url: '/', file: 'index.html' },
   { url: '/services', file: 'services.html' },
@@ -119,10 +133,15 @@ const routes = [
   { url: '/contact', file: 'contact.html' },
   { url: '/booking', file: 'booking.html' },
   { url: '/faq', file: 'faq.html' },
+  { url: '/blog', file: 'blog.html' },
   { url: '/privacy-policy', file: 'privacy-policy.html' },
   ...serviceSlugs.map((slug) => ({
     url: `/services/${slug}`,
     file: path.join('services', `${slug}.html`),
+  })),
+  ...publishedBlogSlugs.map((slug) => ({
+    url: `/blog/${slug}`,
+    file: path.join('blog', `${slug}.html`),
   })),
   ...areaSlugs.map((slug) => ({
     url: `/service-area/${slug}`,
@@ -183,8 +202,15 @@ for (const route of routes) {
 // ---------------------------------------------------------------------------
 const today = new Date().toISOString().slice(0, 10);
 const priority = (u) =>
-  u === '/' ? '1.0' : u.startsWith('/service-area/') ? '0.7' : u === '/privacy-policy' ? '0.3' : '0.8';
-const changefreq = (u) => (u === '/' || u === '/booking' ? 'weekly' : 'monthly');
+  u === '/'
+    ? '1.0'
+    : u === '/privacy-policy'
+      ? '0.3'
+      : u.startsWith('/service-area/') || u.startsWith('/blog/')
+        ? '0.7'
+        : '0.8';
+const changefreq = (u) =>
+  u === '/' || u === '/booking' || u === '/blog' ? 'weekly' : 'monthly';
 
 const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n` +

@@ -6,9 +6,8 @@ import AppContent from './AppContent';
 
 // The prerender script installs jsdom globals so Leaflet can load, which makes
 // react-helmet think it's in a browser. Force the server codepath so
-// Helmet.renderStatic() works.
-// @ts-expect-error - canUseDOM is a real static on react-helmet
-Helmet.canUseDOM = false;
+// Helmet.renderStatic() works. canUseDOM is a real (untyped) static.
+(Helmet as unknown as { canUseDOM: boolean }).canUseDOM = false;
 
 /**
  * Server entry used by scripts/prerender.js to generate static HTML for each

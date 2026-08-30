@@ -11,6 +11,8 @@ import FAQ from './pages/FAQ';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ServiceAreaPage from './pages/ServiceAreaPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import BlogIndex from './pages/BlogIndex';
+import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 
@@ -34,6 +36,7 @@ export default function AppContent() {
               <Link to="/" className="text-gray-700 hover:text-blue-600 transition">Home</Link>
               <Link to="/about" className="text-gray-700 hover:text-blue-600 transition">About</Link>
               <Link to="/services" className="text-gray-700 hover:text-blue-600 transition">Services</Link>
+              <Link to="/blog" className="text-gray-700 hover:text-blue-600 transition">Blog</Link>
               <Link to="/faq" className="text-gray-700 hover:text-blue-600 transition">FAQ</Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition">Contact</Link>
               <Link
@@ -71,6 +74,8 @@ export default function AppContent() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/service-area/:slug" element={<ServiceAreaPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
