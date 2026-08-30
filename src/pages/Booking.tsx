@@ -44,6 +44,21 @@ export default function Booking() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [bookingNumber, setBookingNumber] = useState('');
+  const [submitError, setSubmitError] = useState(false);
+  const [honeypot, setHoneypot] = useState(''); // spam trap: real users never fill this
+
+  const WHATSAPP_NUMBER = '18057042301';
+  const fallbackWhatsAppUrl = () => {
+    const msg =
+      `*Booking request (site form failed)*%0A%0A` +
+      `Service: ${serviceType || '-'}%0A` +
+      `Date: ${selectedDate || '-'} ${selectedTime || ''}%0A` +
+      `Name: ${contactInfo.name || '-'}%0A` +
+      `Phone: ${contactInfo.phone || '-'}%0A` +
+      `Address: ${contactInfo.address || '-'}%0A` +
+      `Notes: ${contactInfo.notes || '-'}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  };
 
   const serviceTypes = [
     'Carpet Cleaning',
@@ -70,7 +85,12 @@ export default function Booking() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Silently drop bot submissions (honeypot filled).
+    if (honeypot) return;
+
     setIsSubmitting(true);
+    setSubmitError(false);
 
     // Generate booking number
     const number = generateBookingNumber();
@@ -107,6 +127,7 @@ export default function Booking() {
     } catch (error) {
       console.error('Error sending booking:', error);
       setIsSubmitting(false);
+      setSubmitError(true);
     }
   };
 
@@ -276,6 +297,45 @@ export default function Booking() {
               />
             </div>
           </div>
+
+          {/* Honeypot - hidden from users, catches bots */}
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            className="hidden"
+            aria-hidden="true"
+          />
+
+          {submitError && (
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+              <p className="font-medium mb-2">
+                We couldn&apos;t send your request just now.
+              </p>
+              <p className="mb-3">
+                Please send it on WhatsApp instead, or call us and we&apos;ll book you in.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={fallbackWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+                >
+                  Send on WhatsApp
+                </a>
+                <a
+                  href="tel:+18057042301"
+                  className="bg-white border border-red-300 text-red-800 px-4 py-2 rounded-lg hover:bg-red-100 transition"
+                >
+                  Call (805) 704-2301
+                </a>
+              </div>
+            </div>
+          )}
 
           {/* Submit Button */}
           <button

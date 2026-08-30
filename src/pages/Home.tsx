@@ -61,52 +61,13 @@ export default function Home() {
     // real values once the Google Business Profile has verified reviews.
   };
 
-  // FAQ schema for rich snippets
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How often should I clean my carpets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The frequency depends on your specific situation:\n\n• Regular households (no pets, shoes off): Every 12-18 months\n• Families with children: Every 3-6 months\n• Pet owners: Every 3-4 months\n• Allergy sufferers: As needed or every 3 months\n\nRegular cleaning helps prevent permanent traffic marks and fiber breakdown."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take for carpets to dry?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Drying time typically ranges from 6-24 hours, depending on carpet type, room ventilation, humidity levels, and air circulation. To speed up drying, we recommend opening windows, using ceiling fans, and running air conditioning or heating."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are your cleaning products safe for pets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! We use eco-friendly, non-toxic cleaning solutions that are completely safe for pets and children. Our enzyme-based treatments are specifically designed to be effective while being gentle on your family and furry friends."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer same-day service?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we offer same-day service when available. Call us at (805) 704-2301 to check our current availability. We typically can schedule appointments within 24-48 hours, and emergency situations may be accommodated sooner."
-        }
-      }
-    ]
-  };
-
-  // NOTE: VideoObject schema removed. It pointed to /video.mp4 and
+  // NOTE: FAQPage schema lives on /faq only (that's where the FAQ content is).
+  // Google flags FAQPage markup on pages without a visible FAQ.
+  // NOTE: VideoObject schema removed - it pointed to /video.mp4 and
   // /video-thumbnail.jpg, which return 404. Add it back only when a real
   // video is hosted (e.g. a YouTube embed) with a valid thumbnail + contentUrl.
 
-  // Combine schemas into an array
-  const jsonLd = [localBusinessSchema, faqSchema];
+  const jsonLd = localBusinessSchema;
 
   return (
     <>
