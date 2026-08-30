@@ -3,7 +3,9 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  # jsdom 30 (used by scripts/prerender.js via its undici dep) needs Node 22+.
+  # On Node 20 the build crashes with "webidl.util.markAsUncloneable is not a function".
+  NODE_VERSION = "22"
 
 # Long-cache hashed assets (Vite fingerprints filenames)
 [[headers]]
