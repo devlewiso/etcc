@@ -6,16 +6,18 @@ import Breadcrumbs from '../components/Breadcrumbs';
 export default function About() {
   // NOTE: founding year and any customer/project counts are pending
   // confirmation from the owner (see Reporte Auditoria/07-preguntas-para-papa.md).
-  // Until verified, this page uses no unverifiable numbers and no aggregateRating.
+  // Founding year: 2023 (owner's estimate - "started ~3 years ago"). No
+  // customer/project counts and no aggregateRating until those are verified.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About E.T Carpet Cleaning",
-    "description": "Learn about E.T Carpet Cleaning - a local, family-run, eco-friendly carpet cleaning company serving San Luis Obispo County, California.",
+    "description": "Learn about E.T Carpet Cleaning - a local, family-run, eco-friendly carpet cleaning company serving San Luis Obispo County since 2023.",
     "mainEntity": {
       "@type": "LocalBusiness",
       "name": "E.T Carpet Cleaning",
-      "description": "A local, family-run carpet cleaning company on California's Central Coast. Our focus is honest pricing, eco-friendly cleaning, and meticulous work.",
+      "description": "A local, family-run carpet cleaning company on California's Central Coast, serving SLO County since 2023. Our focus is honest pricing, eco-friendly cleaning, and meticulous work.",
+      "foundingDate": "2023",
       "telephone": "+1-805-704-2301",
       "email": "contact@etsteamcarpetcleaning.com",
       "url": "https://etsteamcarpetcleaning.com",
@@ -32,7 +34,7 @@ export default function About() {
     <div className="py-24">
       <SEO
         title="About Us | E.T Carpet Cleaning San Luis Obispo"
-        description="E.T Carpet Cleaning is a local, family-run, eco-friendly carpet cleaning company serving San Luis Obispo, Pismo Beach, Arroyo Grande, Paso Robles and the Central Coast."
+        description="E.T Carpet Cleaning is a local, family-run, eco-friendly carpet cleaning company serving San Luis Obispo, Pismo Beach, Arroyo Grande, Paso Robles and the Central Coast since 2023."
         canonical="/about"
         jsonLd={jsonLd}
       />
@@ -44,7 +46,7 @@ export default function About() {
             About E.T Carpet Cleaning
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A local, family-run carpet cleaning company on the Central Coast
+            A local, family-run carpet cleaning company serving the Central Coast since 2023
           </p>
         </div>
 
@@ -54,8 +56,8 @@ export default function About() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
             <p className="text-gray-600 mb-4">
               E.T Carpet Cleaning is a local, family-run business serving San Luis Obispo
-              County and the Central Coast. We started with a simple goal: honest pricing
-              and careful, thorough work on every job.
+              County and the Central Coast since 2023. We started with a simple goal:
+              honest pricing and careful, thorough work on every job.
             </p>
             <p className="text-gray-600">
               We use modern hot-water extraction equipment, UV inspection to find hidden

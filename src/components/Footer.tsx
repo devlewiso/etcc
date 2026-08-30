@@ -33,6 +33,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/blog" className="text-gray-400 hover:text-emerald-500 transition">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-gray-400 hover:text-emerald-500 transition">
                   Contact
                 </Link>
