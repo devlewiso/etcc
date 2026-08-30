@@ -21,12 +21,28 @@ export interface BlogPost {
 import { postCarpetCleaningCostSlo } from './carpet-cleaning-cost-san-luis-obispo';
 import { postHowOftenCentralCoast } from './how-often-clean-carpets-central-coast';
 import { postPetUrineSmell } from './get-pet-urine-smell-out-of-carpet';
+import { postHolidayTimeline } from './carpets-ready-for-the-holidays';
+import { postPismoBeach } from './carpet-cleaning-pismo-beach';
+import { postRentalMachine } from './steam-cleaning-vs-rental-machine';
+import { postStillSmells } from './carpet-still-smells-after-cleaning';
+import { postRainySeason } from './central-coast-rainy-season-carpet';
+import { postCommonStains } from './coffee-wine-grease-stains-carpet';
+import { postUpholstery101 } from './upholstery-cleaning-101';
+import { postPasoRobles } from './carpet-cleaning-paso-robles';
 
-/** Every post, published or scheduled. Keep newest first is not required. */
+/** Every post, published or scheduled. Order does not matter here. */
 export const ALL_POSTS: BlogPost[] = [
   postCarpetCleaningCostSlo,
   postHowOftenCentralCoast,
   postPetUrineSmell,
+  postHolidayTimeline,
+  postPismoBeach,
+  postRentalMachine,
+  postStillSmells,
+  postRainySeason,
+  postCommonStains,
+  postUpholstery101,
+  postPasoRobles,
 ];
 
 /** Today as YYYY-MM-DD in local time (build machine). */
