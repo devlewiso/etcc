@@ -104,11 +104,13 @@ const { render } = await import(`file://${serverEntry}`);
 // ---------------------------------------------------------------------------
 // 3. Routes to pre-render
 // ---------------------------------------------------------------------------
-// Service-area slugs: parsed straight from the source data module.
-const areaSlugs = fs
-  .readFileSync(path.join(root, 'src/data/serviceAreas.ts'), 'utf8')
-  .match(/slug:\s*'([a-z-]+)'/g)
-  ?.map((m) => m.replace(/slug:\s*'|'/g, '')) ?? [];
+// Slugs parsed straight from the source data modules.
+const slugsFrom = (file) =>
+  (fs.readFileSync(path.join(root, file), 'utf8').match(/slug:\s*'([a-z-]+)'/g) || []).map((m) =>
+    m.replace(/slug:\s*'|'/g, '')
+  );
+const areaSlugs = slugsFrom('src/data/serviceAreas.ts');
+const serviceSlugs = slugsFrom('src/data/services.ts');
 
 const routes = [
   { url: '/', file: 'index.html' },
@@ -118,6 +120,10 @@ const routes = [
   { url: '/booking', file: 'booking.html' },
   { url: '/faq', file: 'faq.html' },
   { url: '/privacy-policy', file: 'privacy-policy.html' },
+  ...serviceSlugs.map((slug) => ({
+    url: `/services/${slug}`,
+    file: path.join('services', `${slug}.html`),
+  })),
   ...areaSlugs.map((slug) => ({
     url: `/service-area/${slug}`,
     file: path.join('service-area', `${slug}.html`),

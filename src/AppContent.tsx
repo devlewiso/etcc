@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ServiceAreaPage from './pages/ServiceAreaPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 
@@ -65,6 +66,7 @@ export default function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />

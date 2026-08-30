@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, ExternalLink } from 'lucide-react';
+import GoogleBusinessMap from './GoogleBusinessMap';
 
 /**
  * Reviews section.
@@ -83,6 +84,10 @@ export default function Reviews() {
           </a>{' '}
           and we&apos;ll connect you with references in your area.
         </p>
+
+        <div className="mt-10 text-left">
+          <GoogleBusinessMap heading="See us on Google" />
+        </div>
       </div>
     </section>
   );
