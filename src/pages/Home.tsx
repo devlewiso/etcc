@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import SEO from '../components/SEO';
 import LocalSeoContent from '../components/LocalSeoContent';
+import WhyChooseUs from '../components/WhyChooseUs';
+import ServicesSection from '../components/Services';
+import Reviews from '../components/Reviews';
 
-const WhyChooseUs = lazy(() => import('../components/WhyChooseUs'));
-const ServicesSection = lazy(() => import('../components/Services'));
-const Reviews = lazy(() => import('../components/Reviews'));
+// Only the Leaflet map stays lazy (heavy, non-essential, client-only).
 const ServiceArea = lazy(() => import('../components/ServiceArea'));
 
 export default function Home() {
@@ -117,22 +118,16 @@ export default function Home() {
         jsonLd={jsonLd}
       />
       <Hero />
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
-        <WhyChooseUs />
-      </Suspense>
+      <WhyChooseUs />
       <div className="text-center py-8 bg-gray-50">
         <p className="text-gray-600 mb-4">Have questions about our services?</p>
         <Link to="/faq" className="text-blue-600 hover:underline font-medium">
           Check our FAQ section →
         </Link>
       </div>
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
-        <ServicesSection />
-      </Suspense>
+      <ServicesSection />
       <LocalSeoContent />
-      <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
-        <Reviews />
-      </Suspense>
+      <Reviews />
       <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64" />}>
         <ServiceArea />
       </Suspense>
