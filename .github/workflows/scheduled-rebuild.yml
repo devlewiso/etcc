@@ -1,0 +1,21 @@
+name: Scheduled site rebuild
+
+# Publishes blog posts whose `publishedDate` has arrived.
+# Posts with a future date are hidden until a build runs on/after that date
+# (see src/data/blog/index.ts). This job triggers a Netlify production build
+# once a day so scheduled posts go live on time with no manual work.
+
+on:
+  schedule:
+    # 15:00 UTC daily = 08:00 America/Los_Angeles (PDT) / 07:00 (PST)
+    - cron: '0 15 * * *'
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+jobs:
+  trigger-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Netlify build hook
+        run: |
+          curl --fail --silent --show-error -X POST \
+            "${{ secrets.NETLIFY_BUILD_HOOK }}"
